@@ -1,0 +1,14 @@
+.github/
+
+# Data
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+telcocostumerchunvenv/
+
+# Jupyter
+.ipynb_checkpoints/
