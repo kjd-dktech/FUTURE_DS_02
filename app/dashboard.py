@@ -95,7 +95,7 @@ if page == "1️⃣ Vue d'Ensemble (KPI)":
             color_discrete_sequence=['#2ecc71', '#e74c3c'],
             hole=0.4
         )
-        st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, width='stretch')
 
     with c2:
         mrr_retained = df_filtered[df_filtered['Churn'] == 'No']['MonthlyCharges'].sum()
@@ -104,7 +104,7 @@ if page == "1️⃣ Vue d'Ensemble (KPI)":
             go.Bar(name='Perdu', x=['MRR ($)'], y=[mrr_lost], marker_color='#e74c3c')
         ])
         fig_bar.update_layout(title="Impact Financier Mensuel", barmode='stack')
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, width='stretch')
 
 # ==========================================
 # PAGE 2 : ANALYSE DE SURVIE
@@ -139,7 +139,7 @@ elif page == "2️⃣ Analyse de Survie (Ancienneté)":
     fig.update_yaxes(title_text="Volume", secondary_y=False)
     fig.update_yaxes(title_text="Churn Rate (%)", showgrid=False, secondary_y=True)
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     
     st.info("Près de 50\\% des clients de la première année (0-12 mois) coupent leur abonnement. L'urgence se situe dans le processus d'Onboarding.")
 
@@ -159,7 +159,7 @@ elif page == "3️⃣ Moteurs de Fuite (Contrat & Services)":
         color_discrete_map={"Month-to-month": "#e74c3c", "One year": "#f39c12", "Two year": "#2ecc71"}
     )
     fig_contract.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
-    c1.plotly_chart(fig_contract, use_container_width=True)
+    c1.plotly_chart(fig_contract, width='stretch')
     
     payment_churn = get_churn_rate(df_filtered, 'PaymentMethod')
     fig_pay = px.bar(
@@ -169,7 +169,7 @@ elif page == "3️⃣ Moteurs de Fuite (Contrat & Services)":
     )
     fig_pay.update_layout(showlegend=False)
     fig_pay.update_traces(texttemplate='%{text:.1f}%', textposition='outside', marker_color=['#e74c3c' if x == 'Electronic check' else '#95a5a6' for x in payment_churn['PaymentMethod']])
-    c2.plotly_chart(fig_pay, use_container_width=True)
+    c2.plotly_chart(fig_pay, width='stretch')
 
     st.markdown("---")
     st.markdown("### 2. Le Paradoxe de la Fibre et l'Enfermement")
@@ -179,13 +179,13 @@ elif page == "3️⃣ Moteurs de Fuite (Contrat & Services)":
     services_churn = get_churn_rate(df_filtered[df_filtered['InternetService'] != 'No'], 'Total_Services')
     fig_svc = px.bar(services_churn, x='Total_Services', y='Churn Rate (%)', title="Nombre de services additionnels (Lock-in)")
     fig_svc.update_traces(marker_color='#3498db')
-    c3.plotly_chart(fig_svc, use_container_width=True)
+    c3.plotly_chart(fig_svc, width='stretch')
     
     fiber_df = df_filtered[df_filtered['InternetService'] == 'Fiber optic']
     fiber_sup_churn = get_churn_rate(fiber_df, 'TechSupport')
     fig_fib = px.bar(fiber_sup_churn, x='TechSupport', y='Churn Rate (%)', title="Fibre Optique : Impact du TechSupport")
     fig_fib.update_traces(marker_color=['#e74c3c', '#2ecc71'])
-    c4.plotly_chart(fig_fib, use_container_width=True)
+    c4.plotly_chart(fig_fib, width='stretch')
 
 # ==========================================
 # PAGE 4 : SEGMENTATION
@@ -201,11 +201,11 @@ elif page == "4️⃣ Segmentation Démographique":
     
     fig_fam = px.bar(fam_churn, x='Family_Stability', y='Churn Rate (%)', text='Churn Rate (%)', title="Stabilité Familiale (0=Solo, 2=Famille)")
     fig_fam.update_traces(texttemplate='%{text:.1f}%', textposition='outside', marker_color=['#e74c3c', '#f39c12', '#2ecc71'])
-    c1.plotly_chart(fig_fam, use_container_width=True)
+    c1.plotly_chart(fig_fam, width='stretch')
     
     fig_sen = px.bar(sen_churn, x='SeniorCitizen', y='Churn Rate (%)', text='Churn Rate (%)', title="Client Senior")
     fig_sen.update_traces(texttemplate='%{text:.1f}%', textposition='outside', marker_color=['#2ecc71', '#e74c3c'])
-    c2.plotly_chart(fig_sen, use_container_width=True)
+    c2.plotly_chart(fig_sen, width='stretch')
 
 # ==========================================
 # PAGE 5 : RECOMMANDATIONS (Q6)
