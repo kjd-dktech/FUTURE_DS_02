@@ -38,11 +38,11 @@ st.sidebar.markdown("*Outil de diagnostic et de pilotage stratégique.*")
 page = st.sidebar.radio(
     "Navigation :",
     [
-        "1️⃣ Vue d'Ensemble (KPI)",
-        "2️⃣ Analyse de Survie (Ancienneté)",
-        "3️⃣ Moteurs de Fuite (Contrat & Services)",
-        "4️⃣ Segmentation Démographique",
-        "🎯 Recommandations Stratégiques"
+        "Vue d'Ensemble",
+        "Analyse de Survie",
+        "Moteurs de Fuite",
+        "Segmentation Démographique",
+        "Recommandations Stratégiques"
     ]
 )
 
@@ -61,7 +61,7 @@ def get_churn_rate(data, col):
 # ==========================================
 # PAGE 1 : VUE D'ENSEMBLE
 # ==========================================
-if page == "1️⃣ Vue d'Ensemble (KPI)":
+if page == "Vue d'Ensemble (KPI)":
     st.title("📊 Executive Summary")
     st.markdown("Aperçu global de l'impact de l'attrition sur la base clientèle filtrée.")
     
@@ -109,7 +109,7 @@ if page == "1️⃣ Vue d'Ensemble (KPI)":
 # ==========================================
 # PAGE 2 : ANALYSE DE SURVIE
 # ==========================================
-elif page == "2️⃣ Analyse de Survie (Ancienneté)":
+elif page == "Analyse de Survie (Ancienneté)":
     st.title("⏳ Cohortes d'Ancienneté")
     st.markdown("Quand nos clients décident-ils de nous quitter ? Analyse de l'effet d'ancrage.")
     
@@ -146,7 +146,7 @@ elif page == "2️⃣ Analyse de Survie (Ancienneté)":
 # ==========================================
 # PAGE 3 : MOTEURS DE FUITE
 # ==========================================
-elif page == "3️⃣ Moteurs de Fuite (Contrat & Services)":
+elif page == "Moteurs de Fuite (Contrat & Services)":
     st.title("🔌 Frictions Administratives & Vendor Lock-in")
     
     st.markdown("### 1. L'impact de l'Engagement")
@@ -190,7 +190,7 @@ elif page == "3️⃣ Moteurs de Fuite (Contrat & Services)":
 # ==========================================
 # PAGE 4 : SEGMENTATION
 # ==========================================
-elif page == "4️⃣ Segmentation Démographique":
+elif page == "Segmentation Démographique":
     st.title("👨‍👩‍👧 Profils Démographiques & Risques")
     st.markdown("Identifier les Personas les plus instables.")
     
@@ -210,29 +210,29 @@ elif page == "4️⃣ Segmentation Démographique":
 # ==========================================
 # PAGE 5 : RECOMMANDATIONS (Q6)
 # ==========================================
-elif page == "🎯 Recommandations Stratégiques":
+elif page == "Recommandations Stratégiques":
     st.title("🎯 Plan d'action pour la Direction")
     st.markdown("---")
     
-    st.success("### 🔒 1. Verrouiller l'Engagement Contractuel")
+    st.success("### 1. Verrouiller l'Engagement Contractuel")
     st.write("""
     - **Abolir les facilités de départ :** Le contrat *Month-to-month* (42.7% d'attrition) doit être découragé par une politique de "pricing" agressive qui favorise l'engagement sur 1 ou 2 ans.
     - **Automatiser la trésorerie :** Le paiement manuel (*Electronic check*) génère une friction majeure (+45% de départ). Appliquer une remise symbolique pour obliger le passage au prélèvement automatique (*Auto-pay*).
     """)
     
-    st.error("### 🛠️ 2. Opération Sauvetage 'Fibre Optique'")
+    st.error("### 2. Opération Sauvetage 'Fibre Optique'")
     st.write("""
     - **Le Paradoxe Premium :** L'offre Fibre est chère ($91/mois en moyenne) et suscite de lourdes attentes. Sans *TechSupport*, 1 client Fibre sur 2 part (49.4%).
     - **Stratégie immédiate :** Rendre le service d'assistance premium (`TechSupport`) totalement **gratuit et inclus par défaut** pour les offres Fibre.
     """)
     
-    st.warning("### 🛡️ 3. Surveiller l'Onboarding des Profils Isolés")
+    st.warning("### 3. Surveiller l'Onboarding des Profils Isolés")
     st.write("""
     - **Période de mort (0-12 mois) :** 47% des pertes complètes d'utilisateurs arrivent durant la première année d'ancienneté.
     - **Personas à cibler :** Concentrer l'effort du Service Client humain sur les jeunes célibataires (profil isolé) et les seniors. Un appel d'accompagnement à J+15 et J+90 est fortement recommandé.
     """)
     
-    st.info("### 📦 4. Politique de Cross-Selling (Vendor Lock-in)")
+    st.info("### 4. Politique de Cross-Selling (Vendor Lock-in)")
     st.write("""
     - **Multiplier les couches technologiques :** Un client ne consommant que de l'accès Internet (sans sécurité ni sauvegarde) s'en ira dès la première meilleure offre concurrente.
     - Dès qu'un client possède plus de 3 services optionnels (*Online Backup, Device Protection, etc.*), son inertie technologique garantit sa présence sur le long terme (attrition < 15%). 
